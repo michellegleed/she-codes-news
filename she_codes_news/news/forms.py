@@ -39,6 +39,5 @@ class StoryForm(ModelForm):
                     'placeholder': 'Type your story here.',
                 }
             ),
-          
         }
 

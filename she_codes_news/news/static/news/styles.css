@@ -111,3 +111,12 @@ form p {
 form p label {
     margin-right: 4px;
 }
+
+textarea#content-ta {
+    height: 40vh;
+    width: 66vw;
+}
+
+nav a:hover {
+    color: purple;
+}
