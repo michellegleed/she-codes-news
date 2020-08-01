@@ -84,3 +84,30 @@
     margin: 0 0 10px 10px;
     width: 50%;
 }
+
+.new-story-form-input {
+    color: purple;
+    border: solid 2px;
+    border-radius: 3px;
+}
+
+#new-story-submit-btn {
+    background-color: purple;
+    color: white;
+    border: solid 2px;
+    border-radius: 3px;
+    padding: 4px 8px;
+}
+
+form {
+    width: 75vw;
+    height: 80vh;
+}
+
+form p {
+    display: flex;
+}
+
+form p label {
+    margin-right: 4px;
+}
