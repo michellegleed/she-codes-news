@@ -19,4 +19,8 @@ from django.urls import path, include
 urlpatterns = [
     path('news/', include('news.urls')),
     path('admin/', admin.site.urls),
+    path('users/', include('users.urls')),
+    path('users/', include('django.contrib.auth.urls')), # including all the built-in urls from django-land. This gives us a /users/login and /users/logout etc.
+    
 ]
+
