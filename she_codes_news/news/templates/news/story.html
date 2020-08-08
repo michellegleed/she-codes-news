@@ -8,13 +8,25 @@
 {% block content %}
 
 <div id="story-wrapper">
-    <h2>{{ story.title }}</h2>
-    <h4>{{ story.author }}</h4>
+    <h2>{{ story.title }}</h2>     
+    <h4>{{ story.pub_date }}</h4>
+    {% if story.last_modified != story.pub_date %}
+        <p>Updated: {{ story.last_modified }}</p>
+    {% endif %}
     <div id="story-content">
         <img src="{{ story.image_url }}">
         <!-- <img src="{% static '/news/images/placeholder-5.jpg' %}"> -->
         {{ story.content|linebreaks }}
     </div>
+    <div id="author-info">
+        <img src={{ story.author.image_url }} height="80px" width="100px">
+        <div id="author-info-text">
+            <p>Created by {{ story.author }}</p>
+            <p><a href="{% url 'users:profile' story.author.id %}">View Profile</a></p>  
+        </div>
+        
+    </div>
+    
 </div>
 
 {% endblock %}

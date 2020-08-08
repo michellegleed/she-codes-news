@@ -1,3 +1,7 @@
+a#new-story-link {
+    color: rgb(161, 7, 204)
+}
+
 .story-card {
     margin: 2px;
     border: 1px solid #000;
@@ -117,6 +121,21 @@ textarea#content-ta {
     width: 66vw;
 }
 
-nav a:hover {
+div#author-info {
+    display: flex;
+    justify-content: flex-start;
+}
+
+div#author-info-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+div#author-info-text p {
+    margin: 4px 12px 0 12px;
+}
+
+div#author-info-text a {
     color: purple;
 }

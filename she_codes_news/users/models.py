@@ -3,8 +3,8 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-    # this is where I will put my own fields for the user model.
-    pass
+    bio = models.TextField()
+    image_url = models.CharField(max_length=200)
 
     def __str__(self):
         return self.username

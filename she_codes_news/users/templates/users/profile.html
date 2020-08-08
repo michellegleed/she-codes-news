@@ -1,14 +1,20 @@
-{% entends 'base.html' %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">
+{% endblock %}
 
 {% block content %}
 
 <h2>Profile</h2>
 
-<h4>{{ user }}}</h4>
-<p>User's bio goes here.</p>
+<img src={{ user.image_url }} height='200px' width='250px'>
+<h3>{{ user.username }}</h3>
+<p>{{ user.bio }}</p>
 
 <h4>Published Stories:</h4>
-<p>Query database for stories by logged in user?</p>
+<p>Query database for stories by user?</p>
 
 
 {% endblock %}

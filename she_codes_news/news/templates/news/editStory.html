@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<h2>{{ story.title }}</h2>
+
+<p>form for updating story to go here :)</p>
+
+<p>Also there should be a delete button to delete the story.</p>
+<form action="" method ="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input id="new-story-submit-btn" type="submit" value="Publish Story">
+</form>
+
+{% endblock %}

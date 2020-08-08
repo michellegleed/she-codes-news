@@ -7,11 +7,16 @@
 
 {% block content %}
 
-<h2>Login</h2>
+<h2>Delete your SheCodes News account?</h2>
+
+<p>This action will permanently delete your profile and all of your stories. It cannot be undone.</p>
+
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Login</button>
+    <button type="submit">Delete Account</button>
 </form>
+
+<a><p>I've changed my mind - go back!</p></a>
 
 {% endblock %}

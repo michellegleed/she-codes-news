@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'users/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2>Profile</h2>
+
+<img src={{ user.image_url }} height='200px' width='250px'>
+<h3>{{ user.username }}</h3>
+<button>Edit</button>
+<p>{{ user.bio }}</p>
+
+<h4>Published Stories:</h4>
+{% for story in users_stories %}
+    <div class="profile-story-list-item">
+        <a href="{% url 'news:editStory' story.id %}">
+            <img height="50px" width="50px" src={{ story.image_url }}>
+            <div>
+                <p>{{ story.title }}</p>
+                <p>{{ story.pub_date }}</p>
+            </div>
+        </a>
+    </div>
+    
+{% endfor %}
+
+<a href="{% url 'users:deleteAccount' %}" id="delete-btn">Delete Account</a>
+
+{% endblock %}
