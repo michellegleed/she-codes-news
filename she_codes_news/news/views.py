@@ -1,7 +1,7 @@
 from django.views import generic
 from django.urls import reverse_lazy
 
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import NewsStory
 from .forms import StoryForm
@@ -19,7 +19,7 @@ class AddStoryView(LoginRequiredMixin, generic.CreateView):
         form.instance.author = self.request.user
         return super().form_valid(form)
         
-class EditStoryView(LoginRequiredMixin, generic.UpdateView):
+class EditStoryView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     login_url = reverse_lazy('login')
     redirect_field_name = ''
     
@@ -32,6 +32,12 @@ class EditStoryView(LoginRequiredMixin, generic.UpdateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def test_func(self):
+        story = self.get_object()
+        if self.request.user == story.author:
+            return True
+        return False
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
