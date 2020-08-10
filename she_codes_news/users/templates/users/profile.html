@@ -13,10 +13,16 @@
 <h3>{{ user.username }}</h3>
 <p>{{ user.bio }}</p>
 
-<h4>Published Stories:</h4>
-<p>Query database for stories by user?</p>
+<h4>{{ users_stories|length }} Published Stor{{ users_stories|length|pluralize:"y,ies"}}:</h4>
 {% for story in users_stories %}
-    <p>{{ story.title }}</p>
+    <div class="profile-story-list-item">
+        <a href="{% url 'news:story' story.id %}">
+            <img height="50px" width="50px" src={{ story.image_url }}>
+            <div>
+                <p>{{ story.title }}</p>
+                <p>{{ story.pub_date }}</p>
+            </div>
+        </a>
 {% endfor %}
 
 

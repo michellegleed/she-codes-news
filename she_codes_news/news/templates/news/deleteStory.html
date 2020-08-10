@@ -1,20 +1,20 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 
 {% block stylesheets %}
 <link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
 {% endblock %}
 
-
 {% block content %}
 
-<h2>Update Story</h2>
+<h2>Delete {{ story.title }}</h2>
 
-<form action="" method ="post">
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input id="update-btn" type="submit" value="Save Updates">
-    <a href="{% url 'news:deleteStory' story.id %}">Delete Story</a>
+    <button type="submit">Delete Story</button>
 </form>
+
+<a href="{% url 'news:index' %}"><p>I've changed my mind - go back!</p></a>
 
 {% endblock %}

@@ -64,5 +64,49 @@ a.purple-to-orange-link:hover {
 }
 
 form {
-    margin-bottom: 24px;
+    margin: 48px 0;
+    width: 75vw;
+    max-width: 600px;    
+}
+
+form#delete-story {
+    display: flex;
+    justify-content: flex-end;
+}
+
+form p {
+    display: flex;
+    justify-content: space-between;
+}
+
+form p label {
+    margin-right: 4px;
+}
+
+input {
+    padding: 4px 12px;
+    width: 100px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+#delete-btn {
+    color: red;
+    border: solid red 1px;
+}
+
+#delete-btn:hover {
+    color: white;
+    background-color: red;
+}
+
+#update-btn  {
+    color: rgb(161, 7, 204);
+    border: solid rgb(161, 7, 204) 1px;
+    float: right;
+}
+
+#update-btn:hover {
+    color: white;
+    background-color: rgb(161, 7, 204);
 }

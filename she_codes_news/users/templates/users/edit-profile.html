@@ -10,9 +10,12 @@
 <h2>Edit Profile</h2>
 
 <img src={{ user.image_url }} height='200px' width='250px'>
-<h3>{{ user.username }}</h3>
-<button>Edit</button>
-<p>{{ user.bio }}</p>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Updates</button>
+</form>
 
 <h4>Published Stories:</h4>
 {% for story in users_stories %}
