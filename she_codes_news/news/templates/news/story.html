@@ -13,6 +13,9 @@
     {% if story.modified == True %}
         <p>Updated: {{ story.last_modified }}</p>
     {% endif %}
+    {% if user.id == story.author.id %}
+        <a class="purple-to-orange-link" href="{% url 'news:editStory' story.id %}">Edit story</a>
+    {% endif %}
     <div id="story-content">
         <img src="{{ story.image_url }}">
         <!-- <img src="{% static '/news/images/placeholder-5.jpg' %}"> -->

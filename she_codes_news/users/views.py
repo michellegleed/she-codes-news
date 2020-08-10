@@ -10,14 +10,16 @@ from django.shortcuts import get_object_or_404
 
 from news.models import NewsStory
 from .models import CustomUser
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 class CreateAccountView(CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy("login")
     template_name = 'users/createAccount.html'
 
-class EditProfileView(generic.DetailView):
+class EditProfileView(generic.UpdateView):
+    form_class = CustomUserChangeForm
+    success_url = reverse_lazy("news:index")
     template_name = 'users/edit-profile.html'
 
     def get_context_data(self, **kwargs):

@@ -86,35 +86,17 @@
 }
 
 .new-story-form-input {
-    color: purple;
-    border: solid 2px;
-    border-radius: 3px;
-}
-
-#new-story-submit-btn {
-    background-color: purple;
-    color: white;
-    border: solid 2px;
-    border-radius: 3px;
-    padding: 4px 8px;
-}
-
-form {
     width: 75vw;
-    height: 80vh;
-}
-
-form p {
-    display: flex;
-}
-
-form p label {
-    margin-right: 4px;
+    max-width: 450px;
+    color: rgb(161, 7, 204);;
+    border: solid 2px;
+    border-radius: 3px;
+    flex-grow: 2;
 }
 
 textarea#content-ta {
     height: 40vh;
-    width: 66vw;
+    min-height: 300px;
 }
 
 div#author-info {
