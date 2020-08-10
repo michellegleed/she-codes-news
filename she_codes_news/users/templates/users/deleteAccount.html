@@ -14,9 +14,9 @@
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Delete Account</button>
+    <button id="delete-btn" type="submit">Delete Account</button>
 </form>
 
-<a href="{% url 'users/edit-profile' %}"><p>I've changed my mind - go back!</p></a>
+<a class="purple-to-orange-link" href="{% url 'users:editProfile' %}"><p>I've changed my mind - go back!</p></a>
 
 {% endblock %}
