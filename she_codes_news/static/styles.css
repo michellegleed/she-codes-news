@@ -117,3 +117,9 @@ input {
     color: white;
     background-color: rgb(161, 7, 204);
 }
+
+img#profile-img {
+    filter: none;
+    border-radius: 25%;
+    object-fit: cover;
+}

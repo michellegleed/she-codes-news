@@ -22,7 +22,7 @@
         {{ story.content|linebreaks }}
     </div>
     <div id="author-info">
-        <img src={{ story.author.image_url }} height="80px" width="100px">
+        <img id="profile-img" src={{ story.author.image_url }} height="80px" width="100px">
         <div id="author-info-text">
             <p>Created by {{ story.author }}</p>
             <p><a class="purple-to-orange-link" href="{% url 'users:profile' story.author.id %}">View Profile</a></p>  
