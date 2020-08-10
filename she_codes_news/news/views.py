@@ -17,6 +17,7 @@ class AddStoryView(LoginRequiredMixin, generic.CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
+        # form.instance.last_modified = None
         return super().form_valid(form)
         
 class EditStoryView(LoginRequiredMixin, generic.UpdateView):
@@ -30,7 +31,7 @@ class EditStoryView(LoginRequiredMixin, generic.UpdateView):
     success_url = reverse_lazy('news:index')
 
     def form_valid(self, form):
-        form.instance.author = self.request.user
+        form.instance.modified = True
         return super().form_valid(form)
 
 class IndexView(generic.ListView):

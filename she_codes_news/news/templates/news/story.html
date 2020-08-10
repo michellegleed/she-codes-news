@@ -10,7 +10,7 @@
 <div id="story-wrapper">
     <h2>{{ story.title }}</h2>     
     <h4>{{ story.pub_date }}</h4>
-    {% if story.last_modified != story.pub_date %}
+    {% if story.modified == True %}
         <p>Updated: {{ story.last_modified }}</p>
     {% endif %}
     <div id="story-content">

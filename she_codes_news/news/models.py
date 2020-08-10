@@ -10,7 +10,9 @@ class NewsStory(models.Model):
         on_delete=models.CASCADE
     )
     pub_date = models.DateTimeField(default=timezone.now)
-    last_modified = models.DateTimeField(default=None)
-    # last_modified = models.DateTimeField(auto_now=True)
     image_url = models.CharField(max_length=200)
     content = models.TextField()
+    modified = models.BooleanField(default=False)
+    last_modified = models.DateTimeField(auto_now=True)
+
+    
