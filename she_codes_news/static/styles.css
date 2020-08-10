@@ -54,12 +54,15 @@ a, p {
     font-family: monospace;
 }
 
-a#sign-up-link {
+a.purple-to-orange-link {
     color: rgb(161, 7, 204);
 }
 
 nav a:hover,
-a#sign-up-link:hover,
-a#new-story-link:hover  {
+a.purple-to-orange-link:hover {
     color: orange;
+}
+
+form {
+    margin-bottom: 24px;
 }

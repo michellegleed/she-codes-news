@@ -15,6 +15,9 @@
 
 <h4>Published Stories:</h4>
 <p>Query database for stories by user?</p>
+{% for story in users_stories %}
+    <p>{{ story.title }}</p>
+{% endfor %}
 
 
 {% endblock %}

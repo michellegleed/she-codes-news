@@ -1,7 +1,3 @@
-a#new-story-link {
-    color: rgb(161, 7, 204)
-}
-
 .story-card {
     margin: 2px;
     border: 1px solid #000;
@@ -134,8 +130,4 @@ div#author-info-text {
 
 div#author-info-text p {
     margin: 4px 12px 0 12px;
-}
-
-div#author-info-text a {
-    color: purple;
 }

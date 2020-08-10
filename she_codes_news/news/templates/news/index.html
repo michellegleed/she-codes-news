@@ -7,7 +7,9 @@
 
 {% block content %}
 
-    <a id="new-story-link" href="{% url 'news:newStory' %}">Write New Story</a>
+{% if user.is_authenticated %}
+    <a class="purple-to-orange-link" href="{% url 'news:newStory' %}">Write New Story</a>
+{% endif %}
 
     <h2>Latest News</h2>
 
