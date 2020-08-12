@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{% static 'news/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    <h2>Browse By Category</h2>
+
+    <div id="category-list">
+        {% if object_list %}
+        <ul></ul>
+            {% for category in object_list %}
+               <li><a href="{% url 'news:categoryStories' category.title %}">{{ category.title }}</a></li>
+            {% endfor %}
+    </ul>
+        {% else %}
+            <p>No stories have categories right now.</p>
+        {% endif %}
+    </div>
+
+{% endblock %}

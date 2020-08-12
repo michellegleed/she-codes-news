@@ -1,0 +1,13 @@
+.profile-form-input {
+    width: 75vw;
+    max-width: 450px;
+    color: rgb(161, 7, 204);;
+    border: solid 2px;
+    border-radius: 3px;
+    flex-grow: 2;
+}
+
+textarea#content-ta {
+    height: 40vh;
+    min-height: 300px;
+}

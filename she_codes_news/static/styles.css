@@ -79,7 +79,8 @@ input {
     border-radius: 5px;
 }
 
-#delete-btn {
+
+#delete-link {
     padding: 4px 12px;
     width: 100px;
     background-color: white;

@@ -3,7 +3,7 @@ from django.urls import reverse_lazy
 
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
-from .models import NewsStory
+from .models import NewsStory, Category
 from .forms import StoryForm
 
 class AddStoryView(LoginRequiredMixin, generic.CreateView):
@@ -22,7 +22,7 @@ class AddStoryView(LoginRequiredMixin, generic.CreateView):
         
 class EditStoryView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     login_url = reverse_lazy('login')
-    redirect_field_name = ''
+    # redirect_field_name = ''
     
     model = NewsStory
     form_class = StoryForm
@@ -68,8 +68,38 @@ class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
     context_object_name = 'story'
-
-# class DeleteStoryView(generic.DeleteView):
-#     model = NewsStory
  
 
+
+class CategoryListView(generic.ListView):
+    model = Category
+    template_name = 'news/categoryList.html'
+
+    def get_queryset(self):
+        '''Return all categories.'''
+        return Category.objects.all()
+        
+class CategoryStoriesView(generic.ListView):
+    model = NewsStory
+    template_name = 'news/categoryStories.html'
+    slug_field = 'category_name'
+
+    context_object_name = "stories"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['stories'] = NewsStory.objects.filter(category__title=self.kwargs.get('slug')).order_by('-pub_date')
+        return context
+
+    # def get_queryset(self):
+    #     '''Return all stories with that category.'''
+    #     NewsStory.objects.filter(category__title=self.object.slug)
+        
+    #     category = Category.objects.category(title=catname)
+    #     return Category.category.post_set()
+
+
+# def category_detail(request, pk):
+#     category = get_object_or_404(Category, pk=pk)
+
+     # in this template, you will have access to category and posts under that category by (category.post_set).

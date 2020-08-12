@@ -16,6 +16,9 @@
     {% csrf_token %}
     {{ form.as_p }}
     <input id="update-btn" type="submit" value="Save Updates">
+
+    <a id="delete-link" href="{% url 'news:deleteStory' story.id %}">Delete Story</a>
+
 </form>
 
 {% endblock %}
