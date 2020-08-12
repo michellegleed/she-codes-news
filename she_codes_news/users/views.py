@@ -18,17 +18,20 @@ class CreateAccountView(CreateView):
     template_name = 'users/createAccount.html'
 
 class EditProfileView(generic.UpdateView):
-    form_class = CustomUserChangeForm
+    model = CustomUser
+    fields = ["username", "bio"]
+    # form_class = CustomUserChangeForm
     success_url = reverse_lazy("news:index")
     template_name = 'users/edit-profile.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['users_stories'] = NewsStory.objects.filter(author=self.request.user.id).order_by('-pub_date')
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context['users_stories'] = NewsStory.objects.filter(author=self.request.user.id).order_by('-pub_date')
+    #     return context
 
     def get_object(self):
         return get_object_or_404(CustomUser, pk=self.request.user.id)
+
         # return get_user_model()
 
 class UserProfileView(generic.DetailView):

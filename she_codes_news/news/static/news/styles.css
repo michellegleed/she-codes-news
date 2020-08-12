@@ -113,3 +113,14 @@ div#author-info-text {
 div#author-info-text p {
     margin: 4px 12px 0 12px;
 }
+
+form {
+    margin: 48px 0;
+    width: 75vw;
+    max-width: 600px;    
+}
+
+form#delete-story {
+    display: flex;
+    justify-content: flex-end;
+}

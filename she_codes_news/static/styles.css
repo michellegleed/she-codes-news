@@ -63,17 +63,6 @@ a.purple-to-orange-link:hover {
     color: orange;
 }
 
-form {
-    margin: 48px 0;
-    width: 75vw;
-    max-width: 600px;    
-}
-
-form#delete-story {
-    display: flex;
-    justify-content: flex-end;
-}
-
 form p {
     display: flex;
     justify-content: space-between;
