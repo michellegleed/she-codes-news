@@ -59,7 +59,8 @@ a.purple-to-orange-link {
 }
 
 nav a:hover,
-a.purple-to-orange-link:hover {
+a.purple-to-orange-link:hover,
+a.story-list-item-link:hover {
     color: orange;
 }
 
@@ -81,15 +82,17 @@ input {
 
 
 #delete-link {
-    padding: 4px 12px;
+    padding: 6px 12px 3.5px 12px;
     width: 100px;
     background-color: white;
     border-radius: 5px;
     color: red;
     border: solid red 1px;
     font-family: sans-serif;
-    font-size: 11px;
+    font-size: 11.5px;
     text-align: center;
+    font-weight: 300;
+    line-height: 30px;
 }
 
 #delete-btn:hover {

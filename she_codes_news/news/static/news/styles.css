@@ -88,7 +88,7 @@
 .new-story-form-input {
     width: 75vw;
     max-width: 450px;
-    color: rgb(161, 7, 204);;
+    color: rgb(161, 7, 204);
     border: solid 2px;
     border-radius: 3px;
     flex-grow: 2;
@@ -123,4 +123,13 @@ form {
 form#delete-story {
     display: flex;
     justify-content: flex-end;
+}
+
+.story-card:hover img {
+    filter: none;
+}
+
+.story-card:hover div.story-card-text h3,
+.story-card:hover div.story-card-text h4 {
+    color: rgb(161, 7, 204);
 }

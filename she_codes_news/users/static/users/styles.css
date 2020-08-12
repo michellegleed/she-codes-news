@@ -11,3 +11,18 @@ textarea#content-ta {
     height: 40vh;
     min-height: 300px;
 }
+
+div#horizontal-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.profile-story-list-item {
+    width: 200px;
+    margin: 12px;
+}
+
+div.profile-story-list-item:hover a img {
+    filter: none;
+}
+
