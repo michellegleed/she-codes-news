@@ -35,7 +35,7 @@ class StoryForm(ModelForm):
                 }
             ),
             'category': forms.Select(
-                choices=Category.objects.all().values_list('id', 'title')
+                # choices=Category.objects.all()
             )
         }
 

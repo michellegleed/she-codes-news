@@ -1,5 +1,7 @@
 <nav>
     <a href="{% url 'news:index' %}">Home</a>
+    <a href="{% url 'news:categoryList' %}">Categories</a>
+</div>
 
     {% if user.is_authenticated %}
         <a href="{% url 'users:editProfile' %}">Profile</a>

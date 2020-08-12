@@ -9,13 +9,8 @@
 
 <div>
     {% if user.is_authenticated %}
-    <a class="purple-to-orange-link" href="{% url 'news:newStory' %}">Search By Category</a>
+    <a class="purple-to-orange-link" href="{% url 'news:newStory' %}">Write New Story</a>
 {% endif %}
-
-<a class="purple-to-orange-link" href="{% url 'news:newStory' %}">Write New Story</a>
-</div>
-
-
 
     <h2>Latest News</h2>
 

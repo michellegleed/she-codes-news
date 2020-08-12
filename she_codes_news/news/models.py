@@ -5,6 +5,9 @@ from django.utils import timezone
 class Category(models.Model):
     title = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.title
+
 class NewsStory(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey(
