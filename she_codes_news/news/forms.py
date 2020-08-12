@@ -1,12 +1,12 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import NewsStory
+from .models import NewsStory, Category
 
 class StoryForm(ModelForm):
     class Meta:
         model = NewsStory
-        fields = ["title", "image_url", "content"]
+        fields = ["title", "image_url", "content", "category"]
         widgets = {
             # 'pub_date': forms.DateInput(
             #     format=('%B/%d/%Y %H:%M'),
@@ -34,5 +34,8 @@ class StoryForm(ModelForm):
                     'placeholder': 'Type your story here.',
                 }
             ),
+            'category': forms.Select(
+                choices=Category.objects.all().values_list('id', 'title')
+            )
         }
 
