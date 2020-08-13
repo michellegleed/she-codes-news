@@ -11,11 +11,11 @@
 
     <div id="category-list">
         {% if object_list %}
-        <ul></ul>
+        <ul>
             {% for category in object_list %}
                <li><a href="{% url 'news:categoryStories' category.title %}">{{ category.title }}</a></li>
             {% endfor %}
-    </ul>
+        </ul>
         {% else %}
             <p>No stories have categories right now.</p>
         {% endif %}

@@ -85,6 +85,15 @@
     width: 50%;
 }
 
+form p {
+    display: flex;
+    justify-content: space-between;
+}
+
+form p label {
+    margin-right: 4px;
+}
+
 .new-story-form-input {
     width: 75vw;
     max-width: 450px;
@@ -120,9 +129,26 @@ form {
     max-width: 600px;    
 }
 
+#form-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    width: 75vw;
+    justify-content: flex-end;
+    max-width: 600px;
+}
+
+#form-buttons a {
+    margin: 12px 0;
+}
+
 form#delete-story {
     display: flex;
     justify-content: flex-end;
+}
+
+.story-card:hover {
+    background-color: black;
 }
 
 .story-card:hover img {
@@ -131,5 +157,10 @@ form#delete-story {
 
 .story-card:hover div.story-card-text h3,
 .story-card:hover div.story-card-text h4 {
-    color: rgb(161, 7, 204);
+    /* color: rgb(161, 7, 204); */
+    color: white;
 }
+
+/* form p:nth-last-child(2) {
+    justify-content: flex-start;
+} */

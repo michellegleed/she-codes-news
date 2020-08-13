@@ -10,14 +10,14 @@
 
 <h2>Update Story</h2>
 
-<p><a id="delete-btn" href="{% url 'news:deleteStory' story.id %}">Delete Story</a></p>
-
 <form action="" method ="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <input id="update-btn" type="submit" value="Save Updates">
-
-    <a id="delete-link" href="{% url 'news:deleteStory' story.id %}">Delete Story</a>
+    <div id="form-buttons">
+        <input id="update-btn" type="submit" value="Save Updates">
+        <a id="delete-link" href="{% url 'news:deleteStory' story.id %}">Delete Story</a>
+    </div>
+    
 
 </form>
 

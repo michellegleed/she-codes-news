@@ -7,12 +7,14 @@
 
 {% block content %}
 
-<h2>Delete {{ story.title }}</h2>
+<h2>Delete This Story?</h2>
+
+<h3>{{ object.title }}</h3>
 
 <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Delete Story</button>
+    <button id="delete-link" type="submit">Delete Story</button>
 </form>
 
 <a class="purple-to-orange-link" href="{% url 'news:index' %}"><p>I've changed my mind - go back!</p></a>

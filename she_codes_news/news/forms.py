@@ -6,7 +6,7 @@ from .models import NewsStory, Category
 class StoryForm(ModelForm):
     class Meta:
         model = NewsStory
-        fields = ["title", "image_url", "content", "category"]
+        fields = ["title", "image_url", "category", "content"]
         widgets = {
             # 'pub_date': forms.DateInput(
             #     format=('%B/%d/%Y %H:%M'),
@@ -35,7 +35,9 @@ class StoryForm(ModelForm):
                 }
             ),
             'category': forms.Select(
-                # choices=Category.objects.all()
-            )
+                attrs={
+                    'id': 'category-select',
+                }
+            ),
         }
 

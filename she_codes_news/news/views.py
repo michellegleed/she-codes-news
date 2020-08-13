@@ -1,6 +1,8 @@
 from django.views import generic
 from django.urls import reverse_lazy
 
+from django.shortcuts import get_object_or_404
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import NewsStory, Category
@@ -50,6 +52,9 @@ class DeleteStoryView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteVie
         if self.request.user == story.author:
             return True
         return False
+    
+    def get_object(self):
+        return get_object_or_404(NewsStory, pk=self.kwargs['pk'])
 
 class IndexView(generic.ListView):
     template_name = 'news/index.html'
