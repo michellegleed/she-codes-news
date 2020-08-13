@@ -17,6 +17,6 @@
     <button id="delete-link" type="submit">Delete Story</button>
 </form>
 
-<a class="purple-to-orange-link" href="{% url 'news:index' %}"><p>I've changed my mind - go back!</p></a>
+<a class="purple-to-orange-link" href="{% url 'news:story' object.id %}"><p>I've changed my mind - go back!</p></a>
 
 {% endblock %}

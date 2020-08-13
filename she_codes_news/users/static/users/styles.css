@@ -1,21 +1,35 @@
+form p {
+    display: flex;
+    /* justify-content: space-between; */
+}
+
 input {
     color: rgb(161, 7, 204);
     border: solid 2px;
     border-radius: 3px;
 }
 
-.profile-form-input {
+input.profile-form-input,
+textarea#id_bio {
     width: 75vw;
+    max-width: 600px;
     max-width: 450px;
     color: rgb(161, 7, 204);;
     border: solid 2px;
     border-radius: 3px;
     flex-grow: 2;
+    margin-left: 12px;
 }
 
-textarea#content-ta {
-    height: 40vh;
-    min-height: 300px;
+input#id_username {
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+input#id_image_url {
+    width: 75vw;
+    max-width: 600px;
+    margin-left: 12px;
 }
 
 div#horizontal-list {

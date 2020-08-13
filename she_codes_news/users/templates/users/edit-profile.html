@@ -17,8 +17,8 @@
     <button type="submit">Save Updates</button>
 </form>
 
-<h4>Published Stories:</h4>
-{% for story in users_stories %}
+<!-- <h4>Published Stories:</h4> -->
+<!-- {% for story in users_stories %}
     <div class="profile-story-list-item">
         <a href="{% url 'news:editStory' story.id %}">
             <img height="50px" width="50px" src={{ story.image_url }}>
@@ -29,7 +29,25 @@
         </a>
     </div>
     
-{% endfor %}
+{% endfor %} -->
+
+
+<div id="published-stories-list">
+    <h4>{{ users_stories|length }} Published Stor{{ users_stories|length|pluralize:"y,ies"}}:</h4>
+    <div id="horizontal-list">
+        {% for story in users_stories %}
+            <div class="profile-story-list-item">
+                <a class="story-list-item-link" href="{% url 'news:story' story.id %}">
+                    <img height="50px" width="50px" src={{ story.image_url }}>
+                    <div>
+                        <p>{{ story.title }}</p>
+                        <p>{{ story.pub_date }}</p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 
 <a href="{% url 'users:deleteAccount' %}" id="delete-link">Delete Account</a>
 

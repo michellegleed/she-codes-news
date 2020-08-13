@@ -6,32 +6,32 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email']
+        fields = ['username', 'email', 'image_url']
 
 
-class CustomUserChangeForm(UserChangeForm):
+# class CustomUserChangeForm(UserChangeForm):
 
-    class Meta:
-        model = CustomUser
-        fields = ['username', 'bio', 'image_url']
-        widgets = {
-            'username': forms.TextInput(
-                # attrs={
-                #     'class': 'new-story-form-input',
-                # }
-            ),
-            'image_url': forms.URLInput(
-                attrs={
-                    # 'class': 'new-story-form-input',
-                    'placeholder': 'Enter a url for your profile image.',
-                }
-            ),
-            'bio': forms.Textarea(
-                attrs={
-                    'class': 'profile-form-input',
-                    'id': 'content-ta',
-                    'placeholder': 'Tell us a bit about yourself.',
-                }
-            )
-        }
+#     class Meta:
+#         model = CustomUser
+#         fields = ['username', 'bio', 'image_url']
+#         widgets = {
+#             'username': forms.TextInput(
+#                 attrs={
+#                     'class': 'profile-form-input',
+#                 }
+#             ),
+#             'image_url': forms.URLInput(
+#                 attrs={
+#                     'class': 'profile-form-input',
+#                     'placeholder': 'Enter a url for your profile image.',
+#                 }
+#             ),
+#             'bio': forms.Textarea(
+#                 attrs={
+#                     'class': 'profile-form-input',
+#                     'id': 'content-ta',
+#                     'placeholder': 'Tell us a bit about yourself.',
+#                 }
+#             )
+#         }
 

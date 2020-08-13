@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404
 
 from news.models import NewsStory
 from .models import CustomUser
-from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .forms import CustomUserCreationForm
 
 class CreateAccountView(CreateView):
     form_class = CustomUserCreationForm
@@ -19,15 +19,15 @@ class CreateAccountView(CreateView):
 
 class EditProfileView(generic.UpdateView):
     model = CustomUser
-    fields = ["username", "bio"]
+    fields = ["username", "bio", "image_url"]
     # form_class = CustomUserChangeForm
     success_url = reverse_lazy("news:index")
     template_name = 'users/edit-profile.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['users_stories'] = NewsStory.objects.filter(author=self.request.user.id).order_by('-pub_date')
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['users_stories'] = NewsStory.objects.filter(author=self.request.user.id).order_by('-pub_date')
+        return context
 
     def get_object(self):
         return get_object_or_404(CustomUser, pk=self.request.user.id)
