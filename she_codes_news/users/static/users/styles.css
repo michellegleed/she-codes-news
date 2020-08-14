@@ -21,7 +21,8 @@ textarea#id_bio {
     margin-left: 12px;
 }
 
-input#id_username {
+input#id_username,
+input#id_password2 {
     margin-left: 12px;
     margin-right: 12px;
 }

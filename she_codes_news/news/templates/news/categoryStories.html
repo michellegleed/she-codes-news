@@ -11,7 +11,8 @@
     <a class="purple-to-orange-link" href="{% url 'news:newStory' %}">Write New Story</a>
 {% endif %}
 
-    <!-- <h2> {{ stories.title }} </h2> -->
+<h2>{{ category_title }}</h2>
+
     <div id="all-stories">
         {% for story in stories %}
         {% include "./storyCard.html" with story=story %}

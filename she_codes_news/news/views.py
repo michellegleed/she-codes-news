@@ -94,6 +94,7 @@ class CategoryStoriesView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['stories'] = NewsStory.objects.filter(category__title=self.kwargs.get('slug')).order_by('-pub_date')
+        context['category_title'] = self.kwargs.get('slug')
         return context
 
     # def get_queryset(self):
