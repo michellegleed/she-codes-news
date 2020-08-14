@@ -77,12 +77,15 @@
 
 #story-content {
     text-align: justify;
+    margin-bottom: 48px;
 }
 
 #story-content img {
     float: right;
     margin: 0 0 10px 10px;
     width: 50%;
+    max-height: 60vh;
+    object-fit: cover;  
 }
 
 form p {
