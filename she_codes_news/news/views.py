@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 
 from django.shortcuts import get_object_or_404
 
+from django.contrib.auth import get_user_model
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import NewsStory, Category
@@ -69,12 +71,28 @@ class IndexView(generic.ListView):
         context['all_stories'] = NewsStory.objects.order_by('-pub_date')
         return context
 
+class FollowedTopicsIndexView(generic.ListView):
+    template_name = 'news/followedTopics.html'
+    
+
+    def get_queryset(self):
+        return NewsStory.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        users_categories = Category.objects.filter(customuser__id=self.request.user.id)
+        context['cat_stories'] = NewsStory.objects.none()
+
+        for cat in users_categories:
+            context['cat_stories'] = context['cat_stories'] |NewsStory.objects.filter(category=cat)
+
+        return context
+
 class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
     context_object_name = 'story'
- 
-
 
 class CategoryListView(generic.ListView):
     model = Category

@@ -13,6 +13,15 @@
 <h3>{{ user.username }}</h3>
 <p>{{ user.bio }}</p>
 
+{% if users_categories %}
+    <h4>Following {{ users_categories|length }} Categor{{ users_categories|length|pluralize:"y,ies"}}</h4>
+    <ul>
+    {% for category in users_categories %}
+        <li classname="purple-to-orange-list"><a class="purple-to-orange-link" href="{% url 'news:categoryStories' category.title %}">{{ category.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% endif %}
+
 <div id="published-stories-list">
     <h4>{{ users_stories|length }} Published Stor{{ users_stories|length|pluralize:"y,ies"}}:</h4>
     <div id="horizontal-list">

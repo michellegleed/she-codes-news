@@ -8,7 +8,7 @@ from django.views import generic
 from django.shortcuts import get_object_or_404
 # from django.contrib.auth import get_user_model
 
-from news.models import NewsStory
+from news.models import NewsStory, Category
 from .models import CustomUser
 from .forms import CustomUserCreationForm
 
@@ -42,6 +42,7 @@ class UserProfileView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['users_stories'] = NewsStory.objects.filter(author=self.object).order_by('-pub_date')
+        context['users_categories'] = Category.objects.filter(customuser__id=self.object.id)
         return context
         # While this detail view is executing, self.object will contain the object that the view is operating upon.
 

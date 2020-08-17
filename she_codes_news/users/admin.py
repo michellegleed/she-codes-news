@@ -7,11 +7,18 @@ from .models import CustomUser
 
 # Register your models here.
 
+class MembershipInline(admin.TabularInline):
+    model = CustomUser.favourite_categories.through
+    
+
 class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     # form = CustomUserChangeForm
     model = CustomUser
-    list_display = ['email', 'username']
+    list_display = ['email', 'username', 'image_url']
+    inlines = [
+        MembershipInline,
+    ]
 
 admin.site.register(CustomUser, CustomUserAdmin)
 
