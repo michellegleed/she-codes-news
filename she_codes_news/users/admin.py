@@ -8,7 +8,7 @@ from .models import CustomUser
 # Register your models here.
 
 class MembershipInline(admin.TabularInline):
-    model = CustomUser.favourite_categories.through
+    model = CustomUser.favourite_topics.through
     
 
 class CustomUserAdmin(UserAdmin):

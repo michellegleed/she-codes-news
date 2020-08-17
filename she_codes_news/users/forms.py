@@ -6,14 +6,14 @@ class CustomUserCreationForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'email', 'image_url', 'image', 'favourite_categories']
+        fields = ['username', 'email', 'image_url']
 
 
 class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'bio', 'image_url', 'favourite_categories']
+        fields = ['username', 'bio', 'image_url', 'favourite_topics']
         widgets = {
             'username': forms.TextInput(
                 attrs={
@@ -33,7 +33,7 @@ class CustomUserChangeForm(UserChangeForm):
                     'placeholder': 'Tell us a bit about yourself.',
                 }
             ),
-            'favourite_categories': forms.CheckboxSelectMultiple(
+            'favourite_topics': forms.CheckboxSelectMultiple(
                 attrs={
                     'id': 'checkbox-select',
                 }

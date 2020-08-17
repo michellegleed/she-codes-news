@@ -21,12 +21,10 @@ class AddStoryView(LoginRequiredMixin, generic.CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        # form.instance.last_modified = None
         return super().form_valid(form)
         
 class EditStoryView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     login_url = reverse_lazy('login')
-    # redirect_field_name = ''
     
     model = NewsStory
     form_class = StoryForm
@@ -82,6 +80,7 @@ class FollowedTopicsIndexView(generic.ListView):
         users_categories = Category.objects.filter(customuser__id=self.request.user.id)
         context['followed_topics_stories'] = NewsStory.objects.none()
 
+        # adding the query sets together using the "|" 
         for cat in users_categories:
             context['followed_topics_stories'] = context['followed_topics_stories'] |NewsStory.objects.filter(category=cat)
 
@@ -116,16 +115,3 @@ class CategoryStoriesView(generic.ListView):
         context['stories'] = NewsStory.objects.filter(category__title=self.kwargs.get('slug')).order_by('-pub_date')
         context['category_title'] = self.kwargs.get('slug')
         return context
-
-    # def get_queryset(self):
-    #     '''Return all stories with that category.'''
-    #     NewsStory.objects.filter(category__title=self.object.slug)
-        
-    #     category = Category.objects.category(title=catname)
-    #     return Category.category.post_set()
-
-
-# def category_detail(request, pk):
-#     category = get_object_or_404(Category, pk=pk)
-
-     # in this template, you will have access to category and posts under that category by (category.post_set).

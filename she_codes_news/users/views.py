@@ -19,7 +19,7 @@ class CreateAccountView(CreateView):
 
 class EditProfileView(generic.UpdateView):
     model = CustomUser
-    # fields = ["username", "bio", "image_url", "favourite_categories"]
+    # fields = ["username", "bio", "image_url", "favourite_topics"]
     form_class = CustomUserChangeForm
     success_url = reverse_lazy("news:index")
     template_name = 'users/edit-profile.html'
@@ -33,11 +33,9 @@ class EditProfileView(generic.UpdateView):
         return get_object_or_404(CustomUser, pk=self.request.user.id)
 
     def form_valid(self, form):
-        # form.instance.author = self.request.user
-        # form.instance.last_modified = None
+
         return super().form_valid(form)
 
-        # return get_user_model()
 
 class UserProfileView(generic.DetailView):
     template_name = 'users/profile.html'
