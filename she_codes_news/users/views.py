@@ -6,11 +6,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView
 from django.views import generic
 from django.shortcuts import get_object_or_404
-# from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model
 
 from news.models import NewsStory, Category
 from .models import CustomUser
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 class CreateAccountView(CreateView):
     form_class = CustomUserCreationForm
@@ -19,8 +19,8 @@ class CreateAccountView(CreateView):
 
 class EditProfileView(generic.UpdateView):
     model = CustomUser
-    fields = ["username", "bio", "image_url"]
-    # form_class = CustomUserChangeForm
+    # fields = ["username", "bio", "image_url", "favourite_categories"]
+    form_class = CustomUserChangeForm
     success_url = reverse_lazy("news:index")
     template_name = 'users/edit-profile.html'
 
@@ -31,6 +31,11 @@ class EditProfileView(generic.UpdateView):
 
     def get_object(self):
         return get_object_or_404(CustomUser, pk=self.request.user.id)
+
+    def form_valid(self, form):
+        # form.instance.author = self.request.user
+        # form.instance.last_modified = None
+        return super().form_valid(form)
 
         # return get_user_model()
 
@@ -53,3 +58,5 @@ class DeleteAccountView(DeleteView):
 
     def get_object(self):
         return get_object_or_404(CustomUser, pk=self.request.user.id)
+
+

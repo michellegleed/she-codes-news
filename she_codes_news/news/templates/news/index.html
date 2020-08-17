@@ -8,19 +8,17 @@
 {% block content %}
 
 <div>
-    <div>
-        <div>
-            {% if user.is_authenticated %}
+    {% if user.is_authenticated %}
+    <div id="news-page-authorized-links">
+        <div id="purple-link-left">
             <a class="purple-to-orange-link" href="{% url 'news:newStory' %}">Write New Story</a>
-            {% endif %}
         </div>
-        <div>
-            <a class="purple-to-orange-link" href="{% url 'news:newStory' %}">Show All Stories</a><p>|</p>
-            <a class="purple-to-orange-link" href="{% url 'news:newStory' %}">Followed Categories Only</a>
+        <div id="purple-link-right">
+           <a class="purple-to-orange-link" href="{% url 'news:followedTopics' %}">Show Followed Topics</a>
         </div>
-    
     </div>
-  
+    {% endif %}
+
     <h2>Latest News</h2>
 
     <div id="latest-stories">

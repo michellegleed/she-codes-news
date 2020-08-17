@@ -73,19 +73,21 @@ class IndexView(generic.ListView):
 
 class FollowedTopicsIndexView(generic.ListView):
     template_name = 'news/followedTopics.html'
-    
 
-    def get_queryset(self):
-        return NewsStory.objects.all()
+    model = NewsStory
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
         users_categories = Category.objects.filter(customuser__id=self.request.user.id)
-        context['cat_stories'] = NewsStory.objects.none()
+        context['followed_topics_stories'] = NewsStory.objects.none()
 
         for cat in users_categories:
-            context['cat_stories'] = context['cat_stories'] |NewsStory.objects.filter(category=cat)
+            context['followed_topics_stories'] = context['followed_topics_stories'] |NewsStory.objects.filter(category=cat)
+
+        context['followed_topics_stories'] = context['followed_topics_stories'].order_by('-pub_date')
+
+        context['latest_by_followed'] = context['followed_topics_stories'].order_by('-pub_date')[:4]
 
         return context
 

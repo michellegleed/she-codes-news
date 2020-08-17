@@ -144,3 +144,12 @@ img#profile-img {
 div#alternate-url-link {
     margin-top: 24px;
 }
+
+ul#checkbox-select {
+    list-style: none;
+}
+
+ul#checkbox-select li:hover {
+    color: rgb(161, 7, 204);
+}
+

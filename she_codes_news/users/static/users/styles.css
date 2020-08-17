@@ -10,7 +10,8 @@ input {
 }
 
 input.profile-form-input,
-textarea#id_bio {
+textarea#id_bio,
+textarea#content-ta {
     width: 75vw;
     max-width: 600px;
     max-width: 450px;
@@ -45,5 +46,10 @@ div.profile-story-list-item {
 
 div.profile-story-list-item:hover a img {
     filter: none;
+}
+
+div#id_password,
+span.helptext {
+    font-family: monospace;
 }
 
