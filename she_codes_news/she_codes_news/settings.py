@@ -127,5 +127,9 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# We set these two so the project knows where to store the users' uploaded images. MEDIA_ROOT is where we will store the images in the file system. MEDIA_URL is how we will access the images and serve them to the website.
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 LOGIN_REDIRECT_URL = 'news:index'
 LOGOUT_REDIRECT_URL = 'news:index'

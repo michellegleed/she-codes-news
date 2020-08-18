@@ -6,11 +6,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView
 from django.views import generic
 from django.shortcuts import get_object_or_404
-# from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model
 
-from news.models import NewsStory
+from news.models import NewsStory, Category
 from .models import CustomUser
-from .forms import CustomUserCreationForm
+from .forms import CustomUserCreationForm, CustomUserChangeForm
 
 class CreateAccountView(CreateView):
     form_class = CustomUserCreationForm
@@ -19,8 +19,7 @@ class CreateAccountView(CreateView):
 
 class EditProfileView(generic.UpdateView):
     model = CustomUser
-    fields = ["username", "bio", "image_url"]
-    # form_class = CustomUserChangeForm
+    form_class = CustomUserChangeForm
     success_url = reverse_lazy("news:index")
     template_name = 'users/edit-profile.html'
 
@@ -32,7 +31,10 @@ class EditProfileView(generic.UpdateView):
     def get_object(self):
         return get_object_or_404(CustomUser, pk=self.request.user.id)
 
-        # return get_user_model()
+    def form_valid(self, form):
+
+        return super().form_valid(form)
+
 
 class UserProfileView(generic.DetailView):
     template_name = 'users/profile.html'
@@ -42,6 +44,7 @@ class UserProfileView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['users_stories'] = NewsStory.objects.filter(author=self.object).order_by('-pub_date')
+        context['users_categories'] = Category.objects.filter(customuser__id=self.object.id)
         return context
         # While this detail view is executing, self.object will contain the object that the view is operating upon.
 
@@ -52,3 +55,5 @@ class DeleteAccountView(DeleteView):
 
     def get_object(self):
         return get_object_or_404(CustomUser, pk=self.request.user.id)
+
+

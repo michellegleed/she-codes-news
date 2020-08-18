@@ -3,6 +3,10 @@ form p {
     /* justify-content: space-between; */
 }
 
+label {
+    margin-right: 24px;
+}
+
 input {
     color: rgb(161, 7, 204);
     border: solid 2px;
@@ -10,7 +14,8 @@ input {
 }
 
 input.profile-form-input,
-textarea#id_bio {
+textarea#id_bio,
+textarea#content-ta {
     width: 75vw;
     max-width: 600px;
     max-width: 450px;
@@ -18,12 +23,12 @@ textarea#id_bio {
     border: solid 2px;
     border-radius: 3px;
     flex-grow: 2;
-    margin-left: 12px;
+    margin-left: -12px;
 }
 
 input#id_username,
 input#id_password2 {
-    margin-left: 12px;
+    margin-left: -12px;
     margin-right: 12px;
 }
 
@@ -43,7 +48,20 @@ div.profile-story-list-item {
     margin: 12px;
 }
 
+input#id_image {
+    margin: 0 24px;
+    width: 300px;
+}
+
 div.profile-story-list-item:hover a img {
     filter: none;
 }
 
+div#id_password,
+span.helptext {
+    font-family: monospace;
+}
+
+form p:nth-last-of-type(3) {
+    display: block;
+}

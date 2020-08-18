@@ -13,7 +13,7 @@
         {% if object_list %}
         <ul>
             {% for category in object_list %}
-               <li><a href="{% url 'news:categoryStories' category.title %}">{{ category.title }}</a></li>
+               <li><a class="purple-to-orange-link" href="{% url 'news:categoryStories' category.title %}">{{ category.title }}</a></li>
             {% endfor %}
         </ul>
         {% else %}

@@ -54,6 +54,14 @@ a, p {
     font-family: monospace;
 }
 
+li {
+    color: rgb(161, 7, 204);
+}
+
+li:hover {
+    color: orange;
+}
+
 a.purple-to-orange-link {
     color: rgb(161, 7, 204);
 }
@@ -136,3 +144,12 @@ img#profile-img {
 div#alternate-url-link {
     margin-top: 24px;
 }
+
+ul#checkbox-select {
+    list-style: none;
+}
+
+ul#checkbox-select li:hover {
+    color: rgb(161, 7, 204);
+}
+

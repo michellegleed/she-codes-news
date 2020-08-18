@@ -11,4 +11,5 @@ urlpatterns = [
     path('<int:pk>/delete', views.DeleteStoryView.as_view(), name='deleteStory'),
     path('categories/', views.CategoryListView.as_view(), name='categoryList'),  
     path('categories/<str:slug>', views.CategoryStoriesView.as_view(), name='categoryStories'),
+    path('followed-topics', views.FollowedTopicsIndexView.as_view(), name='followedTopics'),
 ]

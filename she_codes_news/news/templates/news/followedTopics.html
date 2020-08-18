@@ -14,30 +14,32 @@
             <a class="purple-to-orange-link" href="{% url 'news:newStory' %}">Write New Story</a>
         </div>
         <div id="purple-link-right">
-           <a class="purple-to-orange-link" href="{% url 'news:followedTopics' %}">Show Followed Topics</a>
+            <a class="purple-to-orange-link" href="{% url 'news:index' %}">Show All Stories</a>
         </div>
     </div>
     {% endif %}
-
+  
     <h2>Latest News</h2>
 
     <div id="latest-stories">
-        {% if latest_stories %}
-            {% for story in latest_stories %}
+        {% if latest_by_followed %}
+            {% for story in latest_by_followed %}
                 {% include "./storyCard.html" with story=story position=forloop.counter %}
             {% endfor %}
         {% else %}
             <p>No stories are available.</p>
+            <br>
+            <p>Either no stories have been written about your followed topics, or you aren't following any topics. You can choose topics to follow on your Profile page. Just click the "Profile" link in the menu.</p>
         {% endif %}
     </div>
+    
 
     <div id="all-stories">
-        {% if all_stories %}
-            {% for story in all_stories %}
+        {% if followed_topics_stories %}
+            {% for story in followed_topics_stories %}
                 {% include "./storyCard.html" with story=story %}
             {% endfor %}
         {% else %}
-            <p>No stories are available.</p>
         {% endif %}
     </div>
 

@@ -3,6 +3,8 @@ from django.urls import reverse_lazy
 
 from django.shortcuts import get_object_or_404
 
+from django.contrib.auth import get_user_model
+
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 from .models import NewsStory, Category
@@ -19,12 +21,10 @@ class AddStoryView(LoginRequiredMixin, generic.CreateView):
 
     def form_valid(self, form):
         form.instance.author = self.request.user
-        # form.instance.last_modified = None
         return super().form_valid(form)
         
 class EditStoryView(LoginRequiredMixin, UserPassesTestMixin, generic.UpdateView):
     login_url = reverse_lazy('login')
-    # redirect_field_name = ''
     
     model = NewsStory
     form_class = StoryForm
@@ -69,12 +69,31 @@ class IndexView(generic.ListView):
         context['all_stories'] = NewsStory.objects.order_by('-pub_date')
         return context
 
+class FollowedTopicsIndexView(generic.ListView):
+    template_name = 'news/followedTopics.html'
+
+    model = NewsStory
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        users_categories = Category.objects.filter(customuser__id=self.request.user.id)
+        context['followed_topics_stories'] = NewsStory.objects.none()
+
+        # adding the query sets together using the "|" 
+        for cat in users_categories:
+            context['followed_topics_stories'] = context['followed_topics_stories'] |NewsStory.objects.filter(category=cat)
+
+        context['followed_topics_stories'] = context['followed_topics_stories'].order_by('-pub_date')
+
+        context['latest_by_followed'] = context['followed_topics_stories'].order_by('-pub_date')[:4]
+
+        return context
+
 class StoryView(generic.DetailView):
     model = NewsStory
     template_name = 'news/story.html'
     context_object_name = 'story'
- 
-
 
 class CategoryListView(generic.ListView):
     model = Category
@@ -96,16 +115,3 @@ class CategoryStoriesView(generic.ListView):
         context['stories'] = NewsStory.objects.filter(category__title=self.kwargs.get('slug')).order_by('-pub_date')
         context['category_title'] = self.kwargs.get('slug')
         return context
-
-    # def get_queryset(self):
-    #     '''Return all stories with that category.'''
-    #     NewsStory.objects.filter(category__title=self.object.slug)
-        
-    #     category = Category.objects.category(title=catname)
-    #     return Category.category.post_set()
-
-
-# def category_detail(request, pk):
-#     category = get_object_or_404(Category, pk=pk)
-
-     # in this template, you will have access to category and posts under that category by (category.post_set).
