@@ -19,7 +19,6 @@ class CreateAccountView(CreateView):
 
 class EditProfileView(generic.UpdateView):
     model = CustomUser
-    # fields = ["username", "bio", "image_url", "favourite_topics"]
     form_class = CustomUserChangeForm
     success_url = reverse_lazy("news:index")
     template_name = 'users/edit-profile.html'

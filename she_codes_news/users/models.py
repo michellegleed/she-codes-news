@@ -7,7 +7,6 @@ from news.models import Category
 class CustomUser(AbstractUser):
     bio = models.TextField()
     image_url = models.CharField(max_length=200, blank=True)
-    image = models.ImageField(default='default.jpg', upload_to="images/profile/", blank=True)
     favourite_topics = models.ManyToManyField(Category)
 
     def __str__(self):

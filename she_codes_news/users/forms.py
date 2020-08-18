@@ -13,7 +13,7 @@ class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ['username', 'bio', 'image_url', 'favourite_topics']
+        fields = ['username', 'bio', 'image_url',  'favourite_topics', ]
         widgets = {
             'username': forms.TextInput(
                 attrs={
